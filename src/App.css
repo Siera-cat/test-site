@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: #F4EBD9;         /* палитра: кремовый фон */
+  color: #483D3F;              /* палитра: тёмный текст */
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+/* ─── Заголовок и переключатель ─── */
+.app-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #483D3F;
+  letter-spacing: 0.5px;
+}
+
+.mode-switcher {
+  display: inline-flex;
+  gap: 6px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(72, 61, 63, 0.12);
+}
+
+.mode-switcher button {
+  border: none;
+  background: transparent;
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #77685D;
+}
+
+.mode-switcher button.active {
+  background: #058ED9;          /* палитра: активный режим */
+  color: #F4EBD9;
+}
+
+/* ─── Поиск ─── */
+.search-bar {
+  display: flex;
+  gap: 12px;
+  margin: 0 auto 28px;
+  max-width: 640px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 2px solid #A39A92;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #fff;
+  color: #483D3F;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar input::placeholder {
+  color: #A39A92;
+}
+
+.search-bar input:focus {
+  border-color: #058ED9;
+  box-shadow: 0 0 0 4px rgba(5, 142, 217, 0.15);
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #77685D;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search-clear:hover {
+  background: #F4EBD9;
+}
+
+/* ─── Статусы ─── */
+.status {
+  text-align: center;
+  font-size: 1.05rem;
+  margin: 24px 0;
+  color: #77685D;
+}
+
+.status.error {
+  color: #483D3F;
+}
+
+.empty {
+  text-align: center;
+  color: #77685D;
+  margin: 48px 0;
+  font-size: 1.05rem;
+}
+
+/* ─── Сетка и карточки ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(72, 61, 63, 0.08);
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(72, 61, 63, 0.16);
+}
+
+.card-cover {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background: #F4EBD9;
+}
+
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: #483D3F;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #77685D;              /* палитра: мета */
+}
+
+.card-rating {
+  font-weight: 700;
+  color: #058ED9;              /* палитра: рейтинг-акцент */
+}
+
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #77685D;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Карточка как кнопка ─── */
+.card-hit {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.card-hit:focus-visible {
+  outline: 3px solid #058ED9;
+  outline-offset: -3px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.card-more {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #058ED9;
+}
+
+/* ─── Модальное окно ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(72, 61, 63, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 10;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  max-width: 820px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(72, 61, 63, 0.35);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #F4EBD9;
+  color: #483D3F;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-cover {
+  width: 260px;
+  max-height: 390px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #F4EBD9;
+  align-self: flex-start;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 24px;
+}
+
+.modal-body h2 {
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.modal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: #77685D;
+}
+
+.modal-fact {
+  font-size: 0.95rem;
+  color: #483D3F;
+}
+
+.modal-description {
+  line-height: 1.6;
+  color: #483D3F;
+  white-space: pre-line;
+}
+
+@media (max-width: 640px) {
+  .modal {
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal-cover {
+    width: 200px;
+    align-self: center;
+  }
+  .modal-body {
+    padding-right: 0;
+  }
+}
