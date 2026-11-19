@@ -1,5 +1,5 @@
 // Ключ OMDB можно переопределить через .env (VITE_OMDB_KEY)
-const OMDB_KEY = import.meta.env.VITE_OMDB_KEY || '9fcabdea';
+const OMDB_KEY = import.meta.env.VITE_OMDB_KEY;
 const OMDB_URL = 'https://www.omdbapi.com/';
 const OPEN_LIBRARY = 'https://openlibrary.org';
 
@@ -40,6 +40,7 @@ export async function fetchBookDescription(key, signal) {
 const EMPTY_ANSWERS = ['Movie not found!', 'Too many results.'];
 
 export async function searchMovies(query, signal) {
+  if (!OMDB_KEY) throw new Error('Не задан ключ OMDB (VITE_OMDB_KEY)');
   const search = await getJson(
     `${OMDB_URL}?apikey=${OMDB_KEY}&type=movie&s=${encodeURIComponent(query)}`,
     signal
