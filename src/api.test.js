@@ -11,7 +11,7 @@ describe('searchBooks', () => {
         }))
         const books = await searchBooks('dune')
         expect(books).toHaveLength(1)
-        expect(books[0].title).toBe('Dune')
+        expect(books[0].title).toBe('Not Dune')
     })
 
     it('кидает ошибку при плохом ответе сети', async () => {
